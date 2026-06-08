@@ -16,7 +16,7 @@ import {
   Text
 } from "@repo/ui";
 
-import { PublicShell } from "../../../components/shell/public-shell";
+import { SmartShell } from "../../../components/shell/smart-shell";
 
 interface AssetDetailPageProps {
   params: Promise<{ symbol: string }>;
@@ -37,7 +37,7 @@ export default async function AssetDetailPage({ params }: AssetDetailPageProps) 
   const relatedAssets = await assetRepository.getRelatedAssets(asset.symbol, 5);
 
   return (
-    <PublicShell>
+    <SmartShell>
       <main>
         <Section>
           <Container>
@@ -210,7 +210,7 @@ export default async function AssetDetailPage({ params }: AssetDetailPageProps) 
           </Container>
         </Section>
       </main>
-    </PublicShell>
+    </SmartShell>
   );
 }
 

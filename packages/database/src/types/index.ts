@@ -17,5 +17,14 @@ export type {
   Watchlist,
   WatchlistItem,
   EconomicEvent,
-  Impact
+  Impact,
+  Conversation,
+  ConversationMessage,
+  Course,
+  Module,
+  Lesson,
+  UserCourseProgress,
+  Notification,
+  Portfolio,
+  Holding
 } from "../generated/client";

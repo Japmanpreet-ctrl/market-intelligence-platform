@@ -12,9 +12,17 @@ const nextConfig: NextConfig = {
     "@better-auth/prisma-adapter",
     "@prisma/client",
     "better-auth",
+    "groq-sdk",
     "kysely"
   ],
-  transpilePackages: ["@repo/auth", "@repo/config", "@repo/database", "@repo/ui"],
+  transpilePackages: [
+    "@repo/ai",
+    "@repo/auth",
+    "@repo/config",
+    "@repo/database",
+    "@repo/market-data",
+    "@repo/ui"
+  ],
   env: {
     PRISMA_QUERY_ENGINE_BINARY:
       "./node_modules/.prisma/client/libquery_engine-darwin-arm64.dylib.node"

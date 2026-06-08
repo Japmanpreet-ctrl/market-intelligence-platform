@@ -5,7 +5,7 @@ import type { Impact } from "@repo/database";
 import { economicCalendarRepository } from "@repo/market-data";
 import { Badge, Container, EmptyState, Heading, Section, Table, Text } from "@repo/ui";
 
-import { PublicShell } from "../../components/shell/public-shell";
+import { SmartShell } from "../../components/shell/smart-shell";
 
 interface CalendarPageProps {
   searchParams: Promise<{ country?: string; impact?: string }>;
@@ -35,7 +35,7 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
   const impactLevels: Impact[] = ["HIGH", "MEDIUM", "LOW"];
 
   return (
-    <PublicShell>
+    <SmartShell>
       <main>
         <Section>
           <Container>
@@ -159,6 +159,6 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
           </Container>
         </Section>
       </main>
-    </PublicShell>
+    </SmartShell>
   );
 }

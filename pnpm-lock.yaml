@@ -144,6 +144,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.4.0(react-hook-form@7.78.0(react@19.2.7))
+      '@repo/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
       '@repo/auth':
         specifier: workspace:*
         version: link:../../packages/auth
@@ -210,6 +213,10 @@ importers:
         version: 2.1.9(@types/node@22.19.20)(jsdom@29.1.1(@noble/hashes@2.2.0))
 
   packages/ai:
+    dependencies:
+      groq-sdk:
+        specifier: ^1.2.1
+        version: 1.2.1
     devDependencies:
       typescript:
         specifier: ^5.7.3
@@ -2162,6 +2169,10 @@ packages:
   globals@15.15.0:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
     engines: {node: '>=18'}
+
+  groq-sdk@1.2.1:
+    resolution: {integrity: sha512-dsDSWJRJf+n2dPiCv7zU3IsJbrh7jfSPqi6vc1q0TTK1oUF6bn+wv4P2VFdynkHpuJ0TTJ57vlpT87judPgVPA==}
+    hasBin: true
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -4552,6 +4563,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@15.15.0: {}
+
+  groq-sdk@1.2.1: {}
 
   has-flag@4.0.0: {}
 

@@ -5,7 +5,7 @@ import type { AssetType } from "@repo/database";
 import { assetRepository } from "@repo/market-data";
 import { Badge, Container, Heading, Section, Text, Table, EmptyState } from "@repo/ui";
 
-import { PublicShell } from "../../components/shell/public-shell";
+import { SmartShell } from "../../components/shell/smart-shell";
 
 interface MarketsPageProps {
   searchParams: Promise<{
@@ -40,7 +40,7 @@ export default async function MarketsPage({ searchParams }: MarketsPageProps) {
   ];
 
   return (
-    <PublicShell>
+    <SmartShell>
       <main>
         <Section>
           <Container>
@@ -119,86 +119,88 @@ export default async function MarketsPage({ searchParams }: MarketsPageProps) {
                 />
               ) : (
                 <>
-                  <Table>
-                    <thead>
-                      <tr className="border-b border-border">
-                        <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                          Symbol
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                          Name
-                        </th>
-                        <th className="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground sm:table-cell">
-                          Type
-                        </th>
-                        <th className="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground md:table-cell">
-                          Exchange
-                        </th>
-                        <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                          Price
-                        </th>
-                        <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                          Change
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {result.data.map((asset) => {
-                        const snapshot = asset.priceSnapshots[0];
-                        const changePercent = snapshot?.dailyChangePercent ?? 0;
-                        const isPositive = changePercent >= 0;
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <thead>
+                        <tr className="border-b border-border">
+                          <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                            Symbol
+                          </th>
+                          <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                            Name
+                          </th>
+                          <th className="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground sm:table-cell">
+                            Type
+                          </th>
+                          <th className="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-muted-foreground md:table-cell">
+                            Exchange
+                          </th>
+                          <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                            Price
+                          </th>
+                          <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                            Change
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {result.data.map((asset) => {
+                          const snapshot = asset.priceSnapshots[0];
+                          const changePercent = snapshot?.dailyChangePercent ?? 0;
+                          const isPositive = changePercent >= 0;
 
-                        return (
-                          <tr
-                            className="border-b border-border transition-colors hover:bg-muted/30"
-                            key={asset.id}
-                          >
-                            <td className="px-4 py-3">
-                              <Link
-                                className="font-semibold text-primary hover:underline"
-                                href={`/markets/${asset.symbol}`}
-                              >
-                                {asset.symbol}
-                              </Link>
-                            </td>
-                            <td className="px-4 py-3 text-sm text-foreground">
-                              {asset.name}
-                            </td>
-                            <td className="hidden px-4 py-3 sm:table-cell">
-                              <Badge>{asset.assetType}</Badge>
-                            </td>
-                            <td className="hidden px-4 py-3 text-sm text-muted-foreground md:table-cell">
-                              {asset.exchange ?? "—"}
-                            </td>
-                            <td className="px-4 py-3 text-right font-mono text-sm">
-                              {snapshot
-                                ? snapshot.price.toLocaleString("en-US", {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                  })
-                                : "—"}
-                            </td>
-                            <td className="px-4 py-3 text-right">
-                              {snapshot ? (
-                                <span
-                                  className={`inline-flex items-center gap-1 font-mono text-sm font-medium ${
-                                    isPositive
-                                      ? "text-[hsl(var(--success))]"
-                                      : "text-[hsl(var(--danger))]"
-                                  }`}
+                          return (
+                            <tr
+                              className="border-b border-border transition-colors hover:bg-muted/30"
+                              key={asset.id}
+                            >
+                              <td className="px-4 py-3">
+                                <Link
+                                  className="font-semibold text-primary hover:underline"
+                                  href={`/markets/${asset.symbol}`}
                                 >
-                                  {isPositive ? "▲" : "▼"}{" "}
-                                  {Math.abs(changePercent).toFixed(2)}%
-                                </span>
-                              ) : (
-                                "—"
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
+                                  {asset.symbol}
+                                </Link>
+                              </td>
+                              <td className="px-4 py-3 text-sm text-foreground">
+                                {asset.name}
+                              </td>
+                              <td className="hidden px-4 py-3 sm:table-cell">
+                                <Badge>{asset.assetType}</Badge>
+                              </td>
+                              <td className="hidden px-4 py-3 text-sm text-muted-foreground md:table-cell">
+                                {asset.exchange ?? "—"}
+                              </td>
+                              <td className="px-4 py-3 text-right font-mono text-sm">
+                                {snapshot
+                                  ? snapshot.price.toLocaleString("en-US", {
+                                      minimumFractionDigits: 2,
+                                      maximumFractionDigits: 2
+                                    })
+                                  : "—"}
+                              </td>
+                              <td className="px-4 py-3 text-right">
+                                {snapshot ? (
+                                  <span
+                                    className={`inline-flex items-center gap-1 font-mono text-sm font-medium ${
+                                      isPositive
+                                        ? "text-[hsl(var(--success))]"
+                                        : "text-[hsl(var(--danger))]"
+                                    }`}
+                                  >
+                                    {isPositive ? "▲" : "▼"}{" "}
+                                    {Math.abs(changePercent).toFixed(2)}%
+                                  </span>
+                                ) : (
+                                  "—"
+                                )}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  </div>
 
                   {/* Pagination */}
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
@@ -232,6 +234,6 @@ export default async function MarketsPage({ searchParams }: MarketsPageProps) {
           </Container>
         </Section>
       </main>
-    </PublicShell>
+    </SmartShell>
   );
 }

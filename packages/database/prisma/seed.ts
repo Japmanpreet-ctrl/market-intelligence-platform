@@ -791,6 +791,168 @@ async function main() {
   }
 
   console.log(`✓ ${economicEvents.length} economic events seeded`);
+
+  // ─── Seed Learning Content ────────────────────────────────────────────
+  const courses = [
+    {
+      slug: "investing-basics",
+      title: "Investing Basics",
+      description:
+        "Learn the fundamentals of investing, why it matters, and how to get started on your wealth-building journey.",
+      modules: [
+        {
+          title: "Introduction to Investing",
+          order: 1,
+          lessons: [
+            {
+              slug: "what-is-investing",
+              title: "What is Investing?",
+              content:
+                "Investing is the act of allocating resources, usually money, with the expectation of generating an income or profit. You can invest in endeavors, such as using money to start a business, or in assets, such as purchasing real estate in hopes of reselling it later at a higher price.",
+              order: 1
+            },
+            {
+              slug: "why-invest",
+              title: "Why Should You Invest?",
+              content:
+                "Investing is a way to set aside money while you are busy with life and have that money work for you so that you can fully reap the rewards of your labor in the future.",
+              order: 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      slug: "stock-market-fundamentals",
+      title: "Stock Market Fundamentals",
+      description:
+        "Understand how the stock market works, the players involved, and how to evaluate a company.",
+      modules: [
+        {
+          title: "The Stock Market",
+          order: 1,
+          lessons: [
+            {
+              slug: "what-is-a-stock",
+              title: "What is a Stock?",
+              content:
+                "A stock (also known as equity) is a security that represents the ownership of a fraction of a corporation.",
+              order: 1
+            },
+            {
+              slug: "how-markets-work",
+              title: "How do Stock Markets Work?",
+              content:
+                "Stock markets are venues where buyers and sellers meet to exchange equity shares of public corporations.",
+              order: 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      slug: "etf-investing",
+      title: "ETF Investing",
+      description:
+        "Discover Exchange Traded Funds (ETFs) and how they offer a diversified, low-cost way to invest.",
+      modules: [
+        {
+          title: "ETF Basics",
+          order: 1,
+          lessons: [
+            {
+              slug: "what-is-an-etf",
+              title: "What is an ETF?",
+              content:
+                "An exchange-traded fund (ETF) is a type of pooled investment security that operates much like a mutual fund.",
+              order: 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      slug: "macroeconomics-basics",
+      title: "Macroeconomics Basics",
+      description:
+        "A primer on macroeconomics, exploring how whole economies function and interact.",
+      modules: [
+        {
+          title: "Core Concepts",
+          order: 1,
+          lessons: [
+            {
+              slug: "inflation-and-interest-rates",
+              title: "Inflation & Interest Rates",
+              content:
+                "Inflation is the rate of increase in prices over a given period of time. Interest rates are the cost of borrowing money.",
+              order: 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      slug: "risk-management",
+      title: "Risk Management",
+      description:
+        "Learn how to protect your portfolio and understand your own risk tolerance.",
+      modules: [
+        {
+          title: "Managing Risk",
+          order: 1,
+          lessons: [
+            {
+              slug: "diversification",
+              title: "Diversification",
+              content:
+                "Diversification is a risk management strategy that mixes a wide variety of investments within a portfolio.",
+              order: 1
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  await prisma.userCourseProgress.deleteMany({});
+  await prisma.lesson.deleteMany({});
+  await prisma.module.deleteMany({});
+  await prisma.course.deleteMany({});
+
+  for (const courseData of courses) {
+    const course = await prisma.course.create({
+      data: {
+        slug: courseData.slug,
+        title: courseData.title,
+        description: courseData.description
+      }
+    });
+
+    for (const moduleData of courseData.modules) {
+      const module = await prisma.module.create({
+        data: {
+          courseId: course.id,
+          title: moduleData.title,
+          order: moduleData.order
+        }
+      });
+
+      for (const lessonData of moduleData.lessons) {
+        await prisma.lesson.create({
+          data: {
+            moduleId: module.id,
+            slug: lessonData.slug,
+            title: lessonData.title,
+            content: lessonData.content,
+            order: lessonData.order
+          }
+        });
+      }
+    }
+  }
+
+  console.log(`✓ ${courses.length} courses seeded`);
 }
 
 main()

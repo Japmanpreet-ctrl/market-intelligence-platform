@@ -4,7 +4,15 @@ export {
   EconomicCalendarRepository,
   economicCalendarRepository,
   WatchlistRepository,
-  watchlistRepository
+  watchlistRepository,
+  ConversationRepository,
+  conversationRepository,
+  CourseRepository,
+  courseRepository,
+  NotificationRepository,
+  notificationRepository,
+  PortfolioRepository,
+  portfolioRepository
 } from "./repositories";
 export type {
   AssetFilters,

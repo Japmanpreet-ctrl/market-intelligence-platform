@@ -24,7 +24,14 @@ export const PUBLIC_WEB_ROUTES = [
   "/calendar"
 ] as const;
 
-export const PROTECTED_WEB_ROUTES = ["/dashboard", "/watchlists", "/analytics"] as const;
+export const PROTECTED_WEB_ROUTES = [
+  "/dashboard",
+  "/watchlists",
+  "/analytics",
+  "/assistant",
+  "/notifications",
+  "/portfolio"
+] as const;
 
 export const ADMIN_ROUTES = ["/admin"] as const;
 
