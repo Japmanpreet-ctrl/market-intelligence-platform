@@ -22,6 +22,7 @@
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "dotenv": "^16.4.7",
     "eslint": "^9.18.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
@@ -29,7 +30,9 @@
     "jsdom": "^29.1.1",
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
+    "prisma": "^6.19.0",
     "turbo": "^2.3.3",
+    "tsx": "^4.20.6",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0",
     "vitest": "^2.1.8"

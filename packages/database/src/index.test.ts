@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 
+import { prisma } from "./index";
+
 describe("@repo/database", () => {
-  it("keeps the foundation package scaffold testable", () => {
-    expect(true).toBe(true);
+  it("exports the Prisma client boundary", () => {
+    expect(prisma).toBeDefined();
   });
 });

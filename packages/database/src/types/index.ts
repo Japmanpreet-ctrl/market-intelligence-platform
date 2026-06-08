@@ -1,5 +1,3 @@
-export { prisma } from "./client";
-export type { DatabaseClient } from "./client";
 export type {
   AuditLog,
   Permission,
@@ -11,4 +9,4 @@ export type {
   User,
   UserRole,
   UserStatus
-} from "./types";
+} from "@prisma/client";

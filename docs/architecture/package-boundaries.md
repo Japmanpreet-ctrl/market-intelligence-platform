@@ -13,7 +13,8 @@ testable, and deployable.
 
 `@repo/auth` will own authentication contracts and implementation.
 
-`@repo/database` will own database schema, migrations, and database client access.
+`@repo/database` owns database schema, migrations, seed logic, generated Prisma
+Client access, and database type exports.
 
 `@repo/analytics` will own dashboard, metric, report, and analytics contracts.
 
@@ -52,6 +53,10 @@ cross-cutting.
 
 Provider SDKs must be hidden behind internal adapter interfaces. Applications
 must not import provider SDKs directly.
+
+Prisma is owned exclusively by `@repo/database`. Applications and packages must
+not instantiate `PrismaClient` or define Prisma schema files outside that
+package.
 
 ## Import Rules
 
