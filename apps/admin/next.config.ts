@@ -1,3 +1,6 @@
+import { config } from "dotenv";
+config({ path: "../../.env" });
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -8,10 +11,11 @@ const nextConfig: NextConfig = {
   serverExternalPackages: [
     "@better-auth/prisma-adapter",
     "@prisma/client",
+    "@repo/database",
     "better-auth",
     "kysely"
   ],
-  transpilePackages: ["@repo/auth", "@repo/config", "@repo/database", "@repo/ui"]
+  transpilePackages: ["@repo/auth", "@repo/config", "@repo/ui"]
 };
 
 export default nextConfig;

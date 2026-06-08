@@ -11,4 +11,4 @@ export type {
   UserRole,
   UserStatus,
   Verification
-} from "@prisma/client";
+} from "../generated/client";

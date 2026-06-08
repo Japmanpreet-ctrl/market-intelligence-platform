@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { prisma } from "@repo/database";
 import { APIError } from "better-auth/api";
 import { betterAuth } from "better-auth/minimal";
@@ -15,7 +16,9 @@ function getAuthSecret() {
   const secret = process.env.BETTER_AUTH_SECRET;
 
   if (!secret) {
-    throw new Error("BETTER_AUTH_SECRET is required for authentication.");
+    throw new Error(
+      "BETTER_AUTH_SECRET missing. Create .env from .env.example and define BETTER_AUTH_SECRET."
+    );
   }
 
   return secret;
