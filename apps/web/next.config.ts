@@ -22,11 +22,9 @@ const nextConfig: NextConfig = {
     "@repo/database",
     "@repo/market-data",
     "@repo/ui"
-  ],
-  env: {
-    PRISMA_QUERY_ENGINE_BINARY:
-      "./node_modules/.prisma/client/libquery_engine-darwin-arm64.dylib.node"
-  }
+  ]
+  // Do not hardcode PRISMA_QUERY_ENGINE_BINARY here — let Prisma provide
+  // the correct query engine for the runtime platform (Vercel uses Linux).
 };
 
 export default nextConfig;

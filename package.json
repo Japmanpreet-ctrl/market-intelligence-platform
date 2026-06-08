@@ -9,6 +9,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "turbo run lint",
+    "postinstall": "prisma generate --schema=packages/database/prisma/schema.prisma",
     "prepare": "husky",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck"

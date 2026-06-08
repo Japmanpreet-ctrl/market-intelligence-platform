@@ -28,7 +28,7 @@ export function SignInForm() {
   const onSubmit = handleSubmit(async (values) => {
     setErrorMessage(null);
 
-    const callbackURL = searchParams.get("next") ?? "/dashboard";
+    const callbackURL = searchParams?.get("next") ?? "/dashboard";
     const result = isEmailIdentifier(values.identifier)
       ? await signIn.email({
           callbackURL,

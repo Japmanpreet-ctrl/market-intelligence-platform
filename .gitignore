@@ -10,3 +10,5 @@ turbo
 *.tsbuildinfo
 
 packages/database/src/generated/
+.vercel
+.env*
