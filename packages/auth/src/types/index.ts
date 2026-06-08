@@ -20,10 +20,11 @@ export const PUBLIC_WEB_ROUTES = [
   "/about",
   "/pricing",
   "/signin",
-  "/signup"
+  "/signup",
+  "/calendar"
 ] as const;
 
-export const PROTECTED_WEB_ROUTES = ["/dashboard"] as const;
+export const PROTECTED_WEB_ROUTES = ["/dashboard", "/watchlists", "/analytics"] as const;
 
 export const ADMIN_ROUTES = ["/admin"] as const;
 

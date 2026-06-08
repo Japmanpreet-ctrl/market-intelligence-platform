@@ -15,8 +15,10 @@ import { ThemeSwitcher } from "./theme-switcher";
 const workspaceItems = [
   { href: "/dashboard", label: "Overview" },
   { href: "/markets", label: "Markets" },
-  { href: "/learn", label: "Learn" },
-  { href: "/analytics", label: "Analytics" }
+  { href: "/watchlists", label: "Watchlists" },
+  { href: "/calendar", label: "Calendar" },
+  { href: "/analytics", label: "Analytics" },
+  { href: "/learn", label: "Learn" }
 ];
 
 export function AuthenticatedShell({

@@ -12,5 +12,12 @@ export type {
   User,
   UserRole,
   UserStatus,
-  Verification
+  Verification,
+  Asset,
+  AssetType,
+  AssetPriceSnapshot,
+  Watchlist,
+  WatchlistItem,
+  EconomicEvent,
+  Impact
 } from "./types";
