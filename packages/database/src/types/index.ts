@@ -1,4 +1,5 @@
 export type {
+  Account,
   AuditLog,
   Permission,
   Prisma,
@@ -8,5 +9,6 @@ export type {
   Session,
   User,
   UserRole,
-  UserStatus
+  UserStatus,
+  Verification
 } from "@prisma/client";

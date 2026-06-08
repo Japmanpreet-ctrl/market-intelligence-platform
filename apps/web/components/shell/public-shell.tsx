@@ -41,7 +41,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
                 <Link href="/signin">Sign In</Link>
               </Button>
               <Button asChild>
-                <Link href="/signin">Get Started</Link>
+                <Link href="/signup">Get Started</Link>
               </Button>
             </div>
           </Navbar>

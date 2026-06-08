@@ -19,7 +19,13 @@ const workspaceItems = [
   { href: "/analytics", label: "Analytics" }
 ];
 
-export function AuthenticatedShell({ children }: { children: ReactNode }) {
+export function AuthenticatedShell({
+  children,
+  userLabel = "User"
+}: {
+  children: ReactNode;
+  userLabel?: string;
+}) {
   return (
     <div className="min-h-screen bg-background text-foreground lg:grid lg:grid-cols-[260px_1fr]">
       <Sidebar className="hidden lg:flex">
@@ -55,7 +61,9 @@ export function AuthenticatedShell({ children }: { children: ReactNode }) {
             >
               Notifications
             </Button>
-            <Avatar aria-label="User menu placeholder">U</Avatar>
+            <Avatar aria-label="Signed in user">
+              {userLabel.slice(0, 1).toUpperCase()}
+            </Avatar>
           </div>
         </header>
         <main className="flex-1 p-4 sm:p-6">

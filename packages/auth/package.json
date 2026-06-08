@@ -4,7 +4,15 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./client": "./src/client/index.ts",
+    "./guards": "./src/guards/index.ts",
+    "./guards/middleware": "./src/guards/middleware.ts",
+    "./guards/route-access": "./src/guards/route-access.ts",
+    "./permissions": "./src/permissions/index.ts",
+    "./server": "./src/server/index.ts",
+    "./types": "./src/types/index.ts",
+    "./validators": "./src/validators/index.ts"
   },
   "scripts": {
     "build": "tsc --noEmit",
@@ -12,8 +20,20 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@better-auth/prisma-adapter": "^1.6.5",
+    "@repo/database": "workspace:*",
+    "better-auth": "^1.6.5",
+    "zod": "^4.1.13"
+  },
   "devDependencies": {
+    "@types/node": "^22.10.7",
+    "next": "^15.1.4",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "next": ">=15",
+    "react": ">=19"
   }
 }

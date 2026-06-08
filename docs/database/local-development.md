@@ -11,7 +11,7 @@ machine.
 - Host: `localhost`
 - Port: `5432`
 - Default database: `market_intelligence`
-- Default user: `market_user`
+- Default user: `postgres`
 
 ### pgAdmin
 
@@ -27,9 +27,9 @@ Copy `.env.example` to `.env` for local development and adjust values if needed.
 Required local database values:
 
 ```env
-DATABASE_URL=postgresql://market_user:market_password@localhost:5432/market_intelligence?schema=public
-POSTGRES_USER=market_user
-POSTGRES_PASSWORD=market_password
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/market_intelligence?schema=public
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
 POSTGRES_DB=market_intelligence
 PGADMIN_EMAIL=admin@example.com
 PGADMIN_PASSWORD=admin_password

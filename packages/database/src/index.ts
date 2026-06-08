@@ -1,6 +1,7 @@
 export { prisma } from "./client";
 export type { DatabaseClient } from "./client";
 export type {
+  Account,
   AuditLog,
   Permission,
   Prisma,
@@ -10,5 +11,6 @@ export type {
   Session,
   User,
   UserRole,
-  UserStatus
+  UserStatus,
+  Verification
 } from "./types";

@@ -4,8 +4,8 @@ services:
     container_name: market-intelligence-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-market_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-market_password}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-market_intelligence}
     ports:
       - "5432:5432"

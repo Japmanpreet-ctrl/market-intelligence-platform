@@ -3,8 +3,11 @@ import { z } from "zod";
 const emptyToUndefined = (value: unknown) => (value === "" ? undefined : value);
 
 export const envSchema = z.object({
+  BETTER_AUTH_SECRET: z.preprocess(emptyToUndefined, z.string().min(32).optional()),
+  BETTER_AUTH_URL: z.preprocess(emptyToUndefined, z.string().url().optional()),
   DATABASE_URL: z.preprocess(emptyToUndefined, z.string().url().optional()),
   FINNHUB_API_KEY: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  NEXT_PUBLIC_ADMIN_URL: z.preprocess(emptyToUndefined, z.string().url().optional()),
   NEXT_PUBLIC_APP_URL: z.preprocess(emptyToUndefined, z.string().url().optional()),
   OPENAI_API_KEY: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
   PGADMIN_EMAIL: z.preprocess(emptyToUndefined, z.string().email().optional()),
